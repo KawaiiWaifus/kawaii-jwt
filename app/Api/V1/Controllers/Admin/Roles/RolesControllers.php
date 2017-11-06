@@ -18,53 +18,114 @@ class RolesControllers extends Controller
         return response()->json(['auth'=> Auth::user(), 'users' => User::all()]);
     }
 
+    /**
+     * Create Roles
+     * @ Class Role
+     * @@ App\Role
+     */
     public function createRole(Request $request){
 
         $role = new Role();
         $role->name = $request->input('name');
+        $role->display_name = $request->input('display_name');
+        $role->description = $request->input('description');
         $role->save();
 
-        return response()->json("created");
+        return response()->json(['body' => ['message' => "Role $role->name created with seuccess!"]]);
 
     }
 
+    /**
+     * Create Permissions
+     * @ Class Permission
+     * @@ App\Permission
+     */
     public function createPermission(Request $request){
 
-        $viewUsers = new Permission();
-        $viewUsers->name = $request->input('name');
-        $viewUsers->save();
+        $permission = new Permission();
+        $permission->name = $request->input('name');
+        $permission->display_name = $request->input('display_name');
+        $permission->description = $request->input('description');
+        $permission->save();
 
-        return response()->json("created");
+        return response()->json(['body' => ['message' => "Role $role->name created with seuccess!"]]);
 
     }
 
+    /**
+     * Add Role to User
+     * @ Classes Role, User
+     * @@ App\Role, App\User
+     */
     public function assignRole(Request $request){
-        $user = User::where('email', '=', $request->input('email'))->first();
+        /**
+         * select user by id
+         */
+        $user = User::where('id', '=', 
+        $request->input('user_id'))
+                ->first();
+        /**
+         * select role by name
+         */
+        $role = Role::where('name', '=', 
+        $request->input('role'))
+                ->first();
+        /**
+         * add role to user
+         */
+        $result = $user->roles()
+             ->attach($role->id);
 
-        $role = Role::where('name', '=', $request->input('role'))->first();
-        // $user->attachRole($request->input('role'));
-        $user->roles()->attach($role->id);
-
-        return response()->json("created");
+        if ($result):
+            return response()->json(['body' => ['message' => "Role: $role->name added to User: $user->name with success!"]]);
+        else:
+            return response()->json(['body' => ['message' => "Erro to add this role!"]]);
+        endif;
     }
 
+    /**
+     * Add permissions to a Role
+     * @ Classes Role, Permission
+     * @@ App\Role, App\Permission
+     */
     public function attachPermission(Request $request){
-        $role = Role::where('name', '=', $request->input('role'))->first();
-        $permission = Permission::where('name', '=', $request->input('name'))->first();
-        $role->attachPermission($permission);
+        /**
+         * select role by name
+         */
+        $role = Role::where('name', '=', 
+        $request->input('role'))
+                ->first();
 
-        return response()->json("created");
+        /**
+         * select permission by name
+         */
+        $permission = Permission::where('name', '=', 
+        $request->input('permmission'))
+                ->first();
+
+        $result = $role->attachPermission($permission);
+
+        if ($result):
+            return response()->json(['body' => ['message' => "Role: $role->name got permission $permission->name with success!"]]);
+        else:
+            return response()->json(['body' => ['message' => "Erro to add permission to role!"]]);
+        endif;
     }
 
+    /**
+     * Sech Roles from a User
+     * @ class User
+     * @@ App\User
+     */
     public function checkRoles(Request $request){
-        $user = User::where('email', '=', $request->input('email'))->first();
+        $user = User::where('id', '=', $request->input('user_id'))->first();
         Log::info($user);
         return response()->json([
             "user" => $user,
-            "owner" => $user->hasRole('owner'),
+            "user" => $user->hasRole('user'),
             "admin" => $user->hasRole('admin'),
-            "editUser" => $user->can('edit-user'),
-            "listUsers" => $user->can('list-users')
+            "edit.User" => $user->can('edit-user'),
+            "list.Users" => $user->can('list-users')
         ]);
     }
 
