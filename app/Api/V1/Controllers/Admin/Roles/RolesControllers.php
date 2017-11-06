@@ -37,7 +37,7 @@ class RolesControllers extends Controller
             return response()->json([
                 'body' => [
                   'message' => "Role $role->name already exists and can not be added again!",
-                  'status' => 'waring'
+                  'status' => 'warning'
                 ]]);
 
         else:
@@ -77,7 +77,7 @@ class RolesControllers extends Controller
             return response()->json([
                 'body' => [
                     'message' => "Permission $permission->name already exists and can not be added again!",
-                    'status' => 'waring'
+                    'status' => 'warning'
                     ]]);
 
         else:
@@ -125,7 +125,7 @@ class RolesControllers extends Controller
         if ($result):
             return response()->json(['body' => ['message' => "Role: $role->name added to User: $user->name with success!", 'status' => 'success']]);
         else:
-            return response()->json(['body' => ['message' => "Erro to add this role!", 'status' => 'waring']]);
+            return response()->json(['body' => ['message' => "Erro to add this role!", 'status' => 'warning']]);
         endif;
     }
 
@@ -154,7 +154,7 @@ class RolesControllers extends Controller
         if ($result):
             return response()->json(['body' => ['message' => "Role: $role->name got Permission: $permission->name with success!", 'status' => 'success']]);
         else:
-            return response()->json(['body' => ['message' => "Erro to add permission to role!", 'status' => 'waring']]);
+            return response()->json(['body' => ['message' => "Erro to add permission to role!", 'status' => 'warning']]);
         endif;
     }
 
