@@ -27,7 +27,7 @@ For each controller there's an already setup route in `routes/api.php` file:
 
 * `POST api/auth/login`, to do the login and get your access token;
 * `POST api/auth/refresh`, to refresh an existent access token by getting a new one;
-* `POST api/auth/signup`, to create a new user into your application;
+* `POST api/auth/register`, to create a new user into your application;
 * `POST api/auth/recovery`, to recover your credentials;
 * `POST api/auth/reset`, to reset your password after the recovery;
 * `POST api/auth/logout`, to log out the user by invalidating the passed token;
