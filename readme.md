@@ -2,15 +2,20 @@
 ![Kawaii-jwt](https://4.bp.blogspot.com/-BvRwLk3ucNw/Wf_y-MdAIhI/AAAAAAAAD_M/3EX7FF3jdBgCldMAw1HdFuisRYksyDjYQCLcBGAs/s1600/kawaiijwt.jpg)
 
 Laravel API Kawaii-jwt is a "starter kit" Edited from laravel-api-boilerplate-jwt
+
 ReLations packets:
+
 * JWT-Auth - [tymondesigns/jwt-auth](https://github.com/tymondesigns/jwt-auth)
 * Dingo API - [dingo/api](https://github.com/dingo/api)
 * Laravel-CORS [barryvdh/laravel-cors](http://github.com/barryvdh/laravel-cors)
+* ENTRUST [barryvdh/laravel-cors](https://github.com/Zizaco/entrust)
 
 ## Installation 
 * composer create-project kawaiiwaifus/laravel-api-kawaii-jwt myNextProject
 ## Usage
 * run the `php artisan migrate`
+* run the `php artisan db:seed` for create tests users.
+* run the `php artisan entrust:migration`
 ## Main Features
 
 ### A Ready-To-Use Authentication Controllers
