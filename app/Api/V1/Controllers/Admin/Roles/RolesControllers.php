@@ -25,13 +25,36 @@ class RolesControllers extends Controller
      */
     public function createRole(Request $request){
 
-        $role = new Role();
-        $role->name = $request->input('name');
-        $role->display_name = $request->input('display_name');
-        $role->description = $request->input('description');
-        $role->save();
+        /**
+         * select role by name
+         */
+        $role = Role::where('name', '=', 
+        $request->input('name'))
+                ->first();
 
-        return response()->json(['body' => ['message' => "Role $role->name created with seuccess!"]]);
+        if ($role):
+
+            return response()->json([
+                'body' => [
+                  'message' => "Role $role->name already exists and can not be added again!",
+                  'status' => 'waring'
+                ]]);
+
+        else:
+
+            $role = new Role();
+            $role->name = $request->input('name');
+            $role->display_name = $request->input('display_name');
+            $role->description = $request->input('description');
+            $role->save();
+
+            return response()->json([
+                'body' => [
+                    'message' => "Role $role->name created with seuccess!",
+                    'status' => 'success'
+                ]]);
+
+        endif;
 
     }
 
@@ -42,13 +65,36 @@ class RolesControllers extends Controller
      */
     public function createPermission(Request $request){
 
-        $permission = new Permission();
-        $permission->name = $request->input('name');
-        $permission->display_name = $request->input('display_name');
-        $permission->description = $request->input('description');
-        $permission->save();
+        /**
+         * select permission by name
+         */
+        $permission = Permission::where('name', '=', 
+        $request->input('name'))
+                ->first();
+        
+        if ($permission):
 
-        return response()->json(['body' => ['message' => "Role $role->name created with seuccess!"]]);
+            return response()->json([
+                'body' => [
+                    'message' => "Permission $permission->name already exists and can not be added again!",
+                    'status' => 'waring'
+                    ]]);
+
+        else:
+
+            $permission = new Permission();
+            $permission->name = $request->input('name');
+            $permission->display_name = $request->input('display_name');
+            $permission->description = $request->input('description');
+            $permission->save();
+
+            return response()->json([
+                'body' => [
+                    'message' => "Permission $permission->name created with seuccess!",
+                    'status' => 'success'
+                    ]]);
+
+        endif;
 
     }
 
@@ -77,9 +123,9 @@ class RolesControllers extends Controller
              ->attach($role->id);
 
         if ($result):
-            return response()->json(['body' => ['message' => "Role: $role->name added to User: $user->name with success!"]]);
+            return response()->json(['body' => ['message' => "Role: $role->name added to User: $user->name with success!", 'status' => 'success']]);
         else:
-            return response()->json(['body' => ['message' => "Erro to add this role!"]]);
+            return response()->json(['body' => ['message' => "Erro to add this role!", 'status' => 'waring']]);
         endif;
     }
 
@@ -106,9 +152,9 @@ class RolesControllers extends Controller
         $result = $role->attachPermission($permission);
 
         if ($result):
-            return response()->json(['body' => ['message' => "Role: $role->name got permission $permission->name with success!"]]);
+            return response()->json(['body' => ['message' => "Role: $role->name got Permission: $permission->name with success!", 'status' => 'success']]);
         else:
-            return response()->json(['body' => ['message' => "Erro to add permission to role!"]]);
+            return response()->json(['body' => ['message' => "Erro to add permission to role!", 'status' => 'waring']]);
         endif;
     }
 
