@@ -12,10 +12,18 @@ use App\Permission,
 
 class RolesControllers extends Controller
 {
-    
+    /*
+     * instance.
+     * @return void
+    public function __construct()
+    {
+        $this->middleware('auth:api','role:admin', []);
+    }
+    */
+
     public function index()
     {
-        return response()->json(['auth'=> Auth::user(), 'users' => User::all()]);
+       // return response()->json(['auth'=> Auth::user(), 'users' => User::all()]);
     }
 
     /**
