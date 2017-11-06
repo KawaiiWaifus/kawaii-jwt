@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0d9ed5cfe9cda5918e94d9a8e762d3fe",
+    "content-hash": "36fe98d3ad779bf6bd29571d6c714c51",
     "packages": [
         {
             "name": "barryvdh/laravel-cors",
@@ -493,6 +493,74 @@
                 "parser"
             ],
             "time": "2017-05-14T14:47:48+00:00"
+        },
+        {
+            "name": "kawaiiwaifus/entrust",
+            "version": "1.9.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KawaiiWaifus/entrust.git",
+                "reference": "0f814ef3f90b6907b94355b2285db58ee1dbdb1f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KawaiiWaifus/entrust/zipball/0f814ef3f90b6907b94355b2285db58ee1dbdb1f",
+                "reference": "0f814ef3f90b6907b94355b2285db58ee1dbdb1f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/cache": "~5.0",
+                "illuminate/console": "~5.0",
+                "illuminate/support": "~5.0",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "illuminate/database": "~5.0",
+                "mockery/mockery": "dev-master",
+                "phpunit/phpunit": "~4.1",
+                "sami/sami": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/commands"
+                ],
+                "psr-4": {
+                    "Zizaco\\Entrust\\": "src/Entrust/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrew Elkins",
+                    "homepage": "http://andrewelkins.com"
+                },
+                {
+                    "name": "Zizaco Zizuini",
+                    "email": "zizaco@gmail.com"
+                },
+                {
+                    "name": "Ben Batschelet",
+                    "homepage": "http://github.com/bbatsche"
+                },
+                {
+                    "name": "Michele Angioni",
+                    "email": "michele.angioni@gmail.com"
+                }
+            ],
+            "description": "This package provides a flexible way to add Role-based Permissions to Laravel",
+            "keywords": [
+                "acl",
+                "auth",
+                "illuminate",
+                "laravel",
+                "permission",
+                "roles"
+            ],
+            "time": "2017-10-06T05:47:54+00:00"
         },
         {
             "name": "laravel/framework",
@@ -2393,12 +2461,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tymondesigns/jwt-auth.git",
-                "reference": "6c1ec9adaf1920fab99960547aaccb6cd04caff9"
+                "reference": "8ed99d3ddffa02668e3356a936bd1851469cfced"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tymondesigns/jwt-auth/zipball/6c1ec9adaf1920fab99960547aaccb6cd04caff9",
-                "reference": "6c1ec9adaf1920fab99960547aaccb6cd04caff9",
+                "url": "https://api.github.com/repos/tymondesigns/jwt-auth/zipball/8ed99d3ddffa02668e3356a936bd1851469cfced",
+                "reference": "8ed99d3ddffa02668e3356a936bd1851469cfced",
                 "shasum": ""
             },
             "require": {
@@ -2459,7 +2527,7 @@
                 "jwt",
                 "laravel"
             ],
-            "time": "2017-11-03 20:58:04"
+            "time": "2017-11-06 18:07:09"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -2560,74 +2628,6 @@
                 "validate"
             ],
             "time": "2016-11-23T20:04:58+00:00"
-        },
-        {
-            "name": "zizaco/entrust",
-            "version": "1.8.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Zizaco/entrust.git",
-                "reference": "992e484f90a4d00b8ec0f42e8a59ba0b07ba1e09"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Zizaco/entrust/zipball/992e484f90a4d00b8ec0f42e8a59ba0b07ba1e09",
-                "reference": "992e484f90a4d00b8ec0f42e8a59ba0b07ba1e09",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/cache": "~5.0",
-                "illuminate/console": "~5.0",
-                "illuminate/support": "~5.0",
-                "php": ">=5.5.0"
-            },
-            "require-dev": {
-                "illuminate/database": "~5.0",
-                "mockery/mockery": "dev-master",
-                "phpunit/phpunit": "~4.1",
-                "sami/sami": "dev-master"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/commands"
-                ],
-                "psr-4": {
-                    "Zizaco\\Entrust\\": "src/Entrust/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Andrew Elkins",
-                    "homepage": "http://andrewelkins.com"
-                },
-                {
-                    "name": "Zizaco Zizuini",
-                    "email": "zizaco@gmail.com"
-                },
-                {
-                    "name": "Ben Batschelet",
-                    "homepage": "http://github.com/bbatsche"
-                },
-                {
-                    "name": "Michele Angioni",
-                    "email": "michele.angioni@gmail.com"
-                }
-            ],
-            "description": "This package provides a flexible way to add Role-based Permissions to Laravel",
-            "keywords": [
-                "acl",
-                "auth",
-                "illuminate",
-                "laravel",
-                "permission",
-                "roles"
-            ],
-            "time": "2016-12-29T06:24:46+00:00"
         }
     ],
     "packages-dev": [
@@ -3969,12 +3969,11 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
-        "tymon/jwt-auth": 20,
-        "dingo/api": 15
+        "tymon/jwt-auth": 20
     },
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": ">=7.0.0"
