@@ -29,8 +29,8 @@ class RolesControllers extends Controller
 
     /**
      * Create Roles
-     * @ Class Role
-     * @@ App\Role
+     * @ Model Role
+     * @@ App\Api\V1\Models\Role
      */
     public function createRole(Request $request){
 
@@ -69,8 +69,8 @@ class RolesControllers extends Controller
 
     /**
      * Create Permissions
-     * @ Class Permission
-     * @@ App\Permission
+     * @ Model Permission
+     * @@ App\Api\V1\Models\Permission
      */
     public function createPermission(Request $request){
 
@@ -109,8 +109,8 @@ class RolesControllers extends Controller
 
     /**
      * Add Role to User
-     * @ Classes Role, User
-     * @@ App\Role, App\User
+     * @ Model Role, User
+     * @@ App\Api\V1\Models\Role, App\Api\V1\Models\User
      */
     public function assignRole(Request $request){
         /**
@@ -140,8 +140,8 @@ class RolesControllers extends Controller
 
     /**
      * Add permissions to a Role
-     * @ Classes Role, Permission
-     * @@ App\Role, App\Permission
+     * @ Model Role, Permission
+     * @@ App\Api\V1\Models\Role, App\Api\V1\Models\Permission
      */
     public function attachPermission(Request $request){
         /**
@@ -169,8 +169,8 @@ class RolesControllers extends Controller
 
     /**
      * Sech Roles from a User
-     * @ class User
-     * @@ App\User
+     * @ Model User
+     * @@ App\Api\V1\Models\User
      */
     public function checkRoles(Request $request){
         $user = User::where('id', '=', $request->input('user_id'))->first();

@@ -32,7 +32,7 @@
         "tymon/jwt-auth": "dev-develop",
         "dingo/api": "2.0.0-alpha1",
         "barryvdh/laravel-cors": "^0.9.3",
-        "zizaco/entrust": "^1.8"
+        "kawaiiwaifus/entrust": "^1.9.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
