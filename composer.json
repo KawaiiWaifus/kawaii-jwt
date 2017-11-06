@@ -4,6 +4,14 @@
     "keywords": ["laravel", "api", "kawaii", "kawaii jwt", "jwt", "auth", "rest"],
     "license": "MIT",
     "type": "project",
+    "authors": [
+        {
+            "name": "MiX",
+            "email": "mixchatmix5@bgmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "repositories": [
         {
             "type":"package",
