@@ -8,7 +8,7 @@ ReLations packets:
 * Laravel-CORS [barryvdh/laravel-cors](http://github.com/barryvdh/laravel-cors)
 
 ## Installation 
-* composer create-project KawaiiWaifus/kawaii-jwt myNextProject
+* composer create-project kawaiiwaifus/laravel-api-kawaii-jwt myNextProject
 ## Usage
 * run the `php artisan migrate`
 ## Main Features
