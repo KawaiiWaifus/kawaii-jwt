@@ -3,7 +3,8 @@
 namespace App\Api\V1\Controllers\Admin\Roles;
 
 use App\Permission,
-    App\Role, App\User,
+    App\Api\V1\Models\Role,
+    App\Api\V1\Models\User,
     Illuminate\Http\Request,
     App\Api\V1\Controllers\Controller,
     Illuminate\Support\Facades\Auth,
