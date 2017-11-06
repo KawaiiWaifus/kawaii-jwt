@@ -121,11 +121,13 @@ class RolesControllers extends Controller
         $user = User::where('id', '=', $request->input('user_id'))->first();
         Log::info($user);
         return response()->json([
-            "user" => $user,
-            "user" => $user->hasRole('user'),
-            "admin" => $user->hasRole('admin'),
-            "edit.User" => $user->can('edit-user'),
-            "list.Users" => $user->can('list-users')
+            'body' => [
+                "user" => $user,
+                "Role-user" => $user->hasRole('user'),
+                "Role-admin" => $user->hasRole('admin'),
+                "Permission-edit.User" => $user->can('edit-user'),
+                "Permission-list.Users" => $user->can('list-users')
+            ]
         ]);
     }
 
