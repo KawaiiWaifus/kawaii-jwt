@@ -1,19 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Api\V1\Controllers\Admin\Roles;
 
-use App\Permission;
-use App\Role;
-use App\User;
-use Illuminate\Http\Request;
+use App\Permission,
+    App\Role, App\User,
+    Illuminate\Http\Request,
+    App\Api\V1\Controllers\Controller,
+    Illuminate\Support\Facades\Auth,
+    JWTAuth, Tymon\JWTAuth\Exceptions\JWTException,
+    Log;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use JWTAuth;
-use Tymon\JWTAuth\Exceptions\JWTException;
-use Log;
-
-class JwtAuthenticateController extends Controller
+class RolesControllers extends Controller
 {
     
     public function index()

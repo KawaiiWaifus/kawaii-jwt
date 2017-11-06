@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', function ($api) {
-    $api->group(['prefix' => 'auth', 'namespace' => 'App\\Api\\V1\\Controllers\\Auth\\'], function($api) {
+    /**
+     * Routers Auth
+     */
+    $api->group(['prefix' => 'auth', 'namespace' => 'App\Api\V1\Controllers\Auth'], function($api) {
         $api->post('register', 'SignUpController@signUp');
         $api->post('login', 'LoginController@login');
 
@@ -16,6 +19,24 @@ $api->version('v1', function ($api) {
         $api->post('logout', 'LogoutController@logout');
         $api->post('refresh', 'RefreshController@refresh');
         $api->get('me', 'UserController@me');
+    });
+
+    /**
+     * Routers Roles 
+     */
+    $api->group(['prefix' => 'admin', 'namespace' => 'App\Api\V1\Controllers\Admin\Roles'], function($api) {
+        // Route to create a new role
+        $api->post('add-role', 'RolesControllers@createRole');
+        // Route to create a new permission
+        $api->post('add-permission', 'RolesControllers@createPermission');
+        // Route to assign role to user
+        $api->post('add-user-role', 'RolesControllers@assignRole');
+        // Route to attache permission to a role
+        $api->post('add-permission-to-role', 'RolesControllers@attachPermission');
+
+        /**
+         * More routers for edit coming soon
+         */
     });
 
     $api->group(['middleware' => 'jwt.auth'], function($api) {
