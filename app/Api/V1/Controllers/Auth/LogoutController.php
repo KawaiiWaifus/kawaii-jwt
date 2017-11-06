@@ -7,7 +7,7 @@ use App\Api\V1\Controllers\Controller, Auth;
 class LogoutController extends Controller
 {
     /**
-     * Create a new AuthController instance.
+     * instance.
      * @return void
      */
     public function __construct()

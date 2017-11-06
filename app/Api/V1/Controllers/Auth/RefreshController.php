@@ -8,8 +8,6 @@ class RefreshController extends Controller
 {
 
     /**
-     * Create a new AuthController instance.
-     *
      * @return void
      */
     public function __construct()
