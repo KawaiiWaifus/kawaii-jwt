@@ -8,7 +8,7 @@ ReLations packets:
 * JWT-Auth - [tymondesigns/jwt-auth](https://github.com/tymondesigns/jwt-auth)
 * Dingo API - [dingo/api](https://github.com/dingo/api)
 * Laravel-CORS [barryvdh/laravel-cors](http://github.com/barryvdh/laravel-cors)
-* ENTRUST [barryvdh/laravel-cors](https://github.com/Zizaco/entrust)
+* ENTRUST [Zizaco/ENTRUST](https://github.com/Zizaco/entrust)
 
 ## Installation 
 * composer create-project kawaiiwaifus/laravel-api-kawaii-jwt myNextProject
