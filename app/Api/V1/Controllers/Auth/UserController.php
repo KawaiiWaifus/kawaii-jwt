@@ -3,7 +3,7 @@
 namespace App\Api\V1\Controllers\Auth;
 
 use App\Api\V1\Controllers\Controller,
-    Auth;
+    Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
