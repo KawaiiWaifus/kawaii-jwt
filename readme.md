@@ -125,12 +125,7 @@ Thanks to the _barryvdh/laravel-cors_ package, you can handle CORS easily. Just 
 
 ## Tests
 
-If you want to contribute to this project, feel free to do it and open a PR. However, make sure you have tests for what you implement.
-
-In order to run tests:
-
-* create a `homestead_test` database on your machine;
-* run `phpunit`;
+* coming soon..
 
 If you want to specify a different name for the test database, don't forget to change the value in the `phpunix.xml` file.
 
