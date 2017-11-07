@@ -1,5 +1,6 @@
-## Laravel API Kawaii-jwt (JWT) for Laravel 5.5+
-![Kawaii-jwt](https://4.bp.blogspot.com/-BvRwLk3ucNw/Wf_y-MdAIhI/AAAAAAAAD_M/3EX7FF3jdBgCldMAw1HdFuisRYksyDjYQCLcBGAs/s1600/kawaiijwt.jpg) [![Build Status](https://travis-ci.org/BlackMix/kawaii-jwt.svg)](https://travis-ci.org/BlackMix/kawaii-jwt)
+## Laravel API Kawaii-jwt (JWT) for Laravel 5.5+ [![Build Status](https://travis-ci.org/BlackMix/kawaii-jwt.svg)](https://travis-ci.org/BlackMix/kawaii-jwt)
+
+![Kawaii-jwt](https://4.bp.blogspot.com/-BvRwLk3ucNw/Wf_y-MdAIhI/AAAAAAAAD_M/3EX7FF3jdBgCldMAw1HdFuisRYksyDjYQCLcBGAs/s1600/kawaiijwt.jpg)
 
 
 Laravel API Kawaii-jwt is a "starter kit" Edited from laravel-api-boilerplate-jwt
