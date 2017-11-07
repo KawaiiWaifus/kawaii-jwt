@@ -2,7 +2,8 @@
 
 namespace App\Api\V1\Controllers\Auth;
 
-use App\Api\V1\Controllers\Controller, Auth;
+use App\Api\V1\Controllers\Controller,
+    Illuminate\Support\Facades\Auth;
 
 class RefreshController extends Controller
 {
