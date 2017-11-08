@@ -43,6 +43,30 @@ Every time you create a new project starting from this repository, the _php arti
 
 ## Configuration
 
+Database example:
+
+```js
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(120) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(120) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(125) COLLATE utf8_unicode_ci NOT NULL,
+  `remember_token` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `telephone` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `active` int(1) NOT NULL DEFAULT '0',
+  `gender` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `address` varchar(190) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `amount` varchar(75) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `permissions` json DEFAULT NULL,
+  `profile` enum('general','support') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_email_unique` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=325 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+```
+
 You can find all the Kawaii-jwt specific settings in the `config/kawaii-jwt.php` config file.
 
 ```php
