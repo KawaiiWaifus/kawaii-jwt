@@ -152,8 +152,6 @@ Thanks to the _barryvdh/laravel-cors_ package, you can handle CORS easily. Just 
 
 * coming soon..
 
-If you want to specify a different name for the test database, don't forget to change the value in the `phpunix.xml` file.
-
 ## CREDITS:
 * I got the idea of this project and modified some things to work.
 * [laravel-api-boilerplate-jwt](https://github.com/francescomalatesta/laravel-api-boilerplate-jwt)
