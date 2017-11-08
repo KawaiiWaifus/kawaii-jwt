@@ -34,8 +34,8 @@ $api->version('v1', function ($api) {
         // Route to attache permission to a role
         $api->post('add-permission-to-role', 'Roles\RolesControllers@attachPermission');
 
-        $api->get('users', 'Users\UsersControllers@list');
-        $api->post('users/activate/{id}', 'Users\UsersControllers@active');
+        $api->get('user', 'Users\UsersControllers@list');
+        $api->post('user/activate/{id}', 'Users\UsersControllers@active');
 
         /**
          * More routers for edit coming soon
