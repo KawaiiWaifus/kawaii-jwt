@@ -24,15 +24,18 @@ $api->version('v1', function ($api) {
     /**
      * Routers Roles 
      */
-    $api->group(['prefix' => 'admin', 'namespace' => 'App\Api\V1\Controllers\Admin\Roles'], function($api) {
+    $api->group(['prefix' => 'admin', 'namespace' => 'App\Api\V1\Controllers\Admin'], function($api) {
         // Route to create a new role
-        $api->post('add-role', 'RolesControllers@createRole');
+        $api->post('add-role', 'Roles\RolesControllers@createRole');
         // Route to create a new permission
-        $api->post('add-permission', 'RolesControllers@createPermission');
+        $api->post('add-permission', 'Roles\RolesControllers@createPermission');
         // Route to assign role to user
-        $api->post('add-user-role', 'RolesControllers@assignRole');
+        $api->post('add-user-role', 'Roles\RolesControllers@assignRole');
         // Route to attache permission to a role
-        $api->post('add-permission-to-role', 'RolesControllers@attachPermission');
+        $api->post('add-permission-to-role', 'Roles\RolesControllers@attachPermission');
+
+        $api->get('users', 'Users\UsersControllers@list');
+        $api->post('users/activate/{id}', 'Users\UsersControllers@active');
 
         /**
          * More routers for edit coming soon
