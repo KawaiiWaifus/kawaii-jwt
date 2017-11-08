@@ -35,7 +35,7 @@ class UsersControllers extends Controller
         if ($users):
 
             return response()->json([
-                'body' => $users,
+                'body' => $users->items(),
                 'meta' => [
                     'limit'   => $users->perPage(),
                     'page'    => $users->currentPage(),
