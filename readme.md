@@ -1,7 +1,7 @@
-## Laravel API Kawaii-jwt (JWT) for Laravel 5.5+
+## Kawaii-jwt (JWT) for Laravel 5.5+ and Quasar BoilerPlate
 ![Kawaii-jwt](https://4.bp.blogspot.com/-BvRwLk3ucNw/Wf_y-MdAIhI/AAAAAAAAD_M/3EX7FF3jdBgCldMAw1HdFuisRYksyDjYQCLcBGAs/s1600/kawaiijwt.jpg)
 
-Laravel API Kawaii-jwt is a "starter kit" Edited from laravel-api-boilerplate-jwt
+* Kawaii-jwt is API from Quasar BoilerPlate - [BoilerPlate](https://github.com/phpzm/quasar-boilerplate)
 
 ReLations packets:
 
@@ -11,7 +11,7 @@ ReLations packets:
 * ENTRUST [Zizaco/ENTRUST](https://github.com/Zizaco/entrust)
 
 ## Installation 
-* composer create-project kawaiiwaifus/laravel-api-kawaii-jwt myNextProject
+* composer create-project kawaiiwaifus/laravel-api-kawaii-jwt NameOfProject
 ## Usage
 * run the `php artisan entrust:migration`
 * run the `php artisan migrate`
@@ -153,7 +153,7 @@ Thanks to the _barryvdh/laravel-cors_ package, you can handle CORS easily. Just 
 
 If you want to specify a different name for the test database, don't forget to change the value in the `phpunix.xml` file.
 
-## CREDITS FROM:
-
-* Original saurce - [laravel-api-boilerplate-jwt](https://github.com/francescomalatesta/laravel-api-boilerplate-jwt)
+## CREDITS:
+* I got the idea of this project and modified some things to work.
+* [laravel-api-boilerplate-jwt](https://github.com/francescomalatesta/laravel-api-boilerplate-jwt)
 
