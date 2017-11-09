@@ -29,7 +29,18 @@ class Get extends Controller
         if ($user):
 
             return response()->json([
-                'body' => $user,
+                'body' => [
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'telephone' => $user->telephone,
+                    'active' => $user->active,
+                    'gender' => $user->gender,
+                    'address' => $user->address,
+                    'amount' => $user->amount,
+                    'permissions' => json_decode($user->permissions),
+                    'profile' => json_decode($user->profile)
+                ],
                 'status'  => [
                    'code' => 200
                   ]

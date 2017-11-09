@@ -47,6 +47,14 @@ $api->version('v1', function ($api) {
         $api->post('user/activate/{id}', 'Users\Active@active');
 
         /**
+         * Organizations
+         */
+        // List all organizations
+        $api->get('organization', 'Organization\OrganizationController@list');
+
+        
+
+        /**
          * More routers for edit coming soon
          */
     });
