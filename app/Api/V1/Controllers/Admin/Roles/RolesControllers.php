@@ -2,7 +2,7 @@
 
 namespace App\Api\V1\Controllers\Admin\Roles;
 
-use App\Permission,
+use App\Api\V1\Models\Permission,
     App\Api\V1\Models\Role,
     App\Api\V1\Models\User,
     Illuminate\Http\Request,
@@ -163,7 +163,7 @@ class RolesControllers extends Controller
         if ($result):
             return response()->json(['body' => ['message' => "Role: $role->name got Permission: $permission->name with success!", 'status' => 'success']]);
         else:
-            return response()->json(['body' => ['message' => "Erro to add permission to role!", 'status' => 'warning']]);
+            return response()->json(['body' => ['message' => "Error to add permission to role!", 'status' => 'warning']]);
         endif;
     }
 
@@ -174,7 +174,7 @@ class RolesControllers extends Controller
      */
     public function checkRoles(Request $request){
         $user = User::where('id', '=', $request->input('user_id'))->first();
-        Log::info($user);
+        // Log::info($user);
         return response()->json([
             'body' => [
                 "user" => $user,
