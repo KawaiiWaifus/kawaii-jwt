@@ -80,7 +80,7 @@ class UsersControllers extends Controller
     }
 
     /**
-     * @function get user
+     * @function update user
      */
     public function update(Request $request, $id)
     {
@@ -124,7 +124,7 @@ class UsersControllers extends Controller
             else: // if user got update end
 
                 return response()->json(['message' => 'Update got error for user: '.$user->name], 412);
-                
+
             endif;
 
         else: // if has user in db end
