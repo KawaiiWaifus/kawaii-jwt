@@ -34,7 +34,15 @@ $api->version('v1', function ($api) {
         // Route to attache permission to a role
         $api->post('add-permission-to-role', 'Roles\RolesControllers@attachPermission');
 
+        /**
+         * Users
+         */
+        // List all users
         $api->get('user', 'Users\UsersControllers@list');
+        // Get a user for edit
+        $api->get('user/{id}', 'Users\UsersControllers@get');
+        // update a user
+        $api->put('user/{id}', 'Users\UsersControllers@update');
         $api->post('user/activate/{id}', 'Users\UsersControllers@active');
 
         /**
