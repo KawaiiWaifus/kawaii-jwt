@@ -38,12 +38,13 @@ $api->version('v1', function ($api) {
          * Users
          */
         // List all users
-        $api->get('user', 'Users\UsersControllers@list');
+        $api->get('user', 'Users\ListUsers@list');
         // Get a user for edit
-        $api->get('user/{id}', 'Users\UsersControllers@get');
-        // update a user
-        $api->put('user/{id}', 'Users\UsersControllers@update');
-        $api->post('user/activate/{id}', 'Users\UsersControllers@active');
+        $api->get('user/{id}', 'Users\Get@get');
+        // Update a user
+        $api->put('user/{id}', 'Users\Update@update');
+        // Active or Disable a User
+        $api->post('user/activate/{id}', 'Users\Active@active');
 
         /**
          * More routers for edit coming soon
