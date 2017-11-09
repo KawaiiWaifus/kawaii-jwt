@@ -45,7 +45,7 @@ class Update extends Controller
             endif;
 
             if($request->input('paswword')):
-                $user->paswword = $request->input('paswword');
+                $user->paswword = bcrypt($request->input('paswword'));
             endif;
 
             $done = $user->save();
