@@ -13,14 +13,15 @@ use App\Api\V1\Models\Permission,
 
 class RolesControllers extends Controller
 {
-    /*
+    /**
      * instance.
      * @return void
+     */
     public function __construct()
     {
-        $this->middleware('auth:api','role:admin', []);
+        $this->middleware(['auth:api','role:admin.roles']);
     }
-    */
+    
 
     public function index()
     {
@@ -125,17 +126,20 @@ class RolesControllers extends Controller
         $role = Role::where('name', '=', 
         $request->input('role'))
                 ->first();
+
+        // check if this user has the role
+        if (Auth::user()->hasRole($request->input('role'))):
+            return response()->json(['body' => ['message' => $user->name." already have this Role!", 'status' => 'warning']]);
+        endif;
+
         /**
          * add role to user
          */
-        $result = $user->roles()
+        $user->roles()
              ->attach($role->id);
 
-        if ($result):
-            return response()->json(['body' => ['message' => "Role: $role->name added to User: $user->name with success!", 'status' => 'success']]);
-        else:
-            return response()->json(['body' => ['message' => "Erro to add this role!", 'status' => 'warning']]);
-        endif;
+        return response()->json(['body' => ['message' => "Role: $role->name added to User: $user->name with success!", 'status' => 'success']]);
+
     }
 
     /**
@@ -144,11 +148,6 @@ class RolesControllers extends Controller
      * @@ App\Api\V1\Models\Role, App\Api\V1\Models\Permission
      */
     public function attachPermission(Request $request){
-/*
-        if (!Auth::user()->ability(['admin.roles'], ['create'])):
-            return 'no permission';
-        endif;
-*/
         /**
          * select role by name
          */
@@ -195,6 +194,10 @@ class RolesControllers extends Controller
      * @return object permissions for test
      */
     public function show(){
+
+        if (!Auth::user()->ability(['admin.roles'], ['create'])):
+            return 'no permission';
+        endif;
 
         $perm = [];
         foreach (Auth::user()->roles()->get() as $p) {
