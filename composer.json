@@ -28,7 +28,7 @@
     ],
     "require": {
         "php": ">=7.0.0",
-        "laravel/framework": "^5.5.19",
+        "laravel/framework": "^5.5.20",
         "tymon/jwt-auth": "dev-develop",
         "dingo/api": "2.0.0-alpha1",
         "barryvdh/laravel-cors": "^0.9.3",
@@ -37,13 +37,14 @@
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~5.7",
+        "phpunit/phpunit": "~6.0",
         "symfony/css-selector": "3.1.*",
         "symfony/dom-crawler": "3.1.*"
     },
     "autoload": {
         "classmap": [
-            "database"
+            "database",
+            "tests/TestCase.php"
         ],
         "psr-4": {
             "App\\": "app/"
@@ -51,7 +52,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "App\\": "tests/"
+          "Tests\\": "tests/"
         }
     },
     "scripts": {
