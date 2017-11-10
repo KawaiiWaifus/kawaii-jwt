@@ -5,7 +5,8 @@ namespace App\Api\V1\Models;
 use Illuminate\Notifications\Notifiable,
     Illuminate\Foundation\Auth\User as Authenticatable,
     Tymon\JWTAuth\Contracts\JWTSubject,
-    Zizaco\Entrust\Traits\EntrustUserTrait;
+    Zizaco\Entrust\Traits\EntrustUserTrait,
+    Config;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -36,15 +37,10 @@ class User extends Authenticatable implements JWTSubject
         return $this->getKey();
     }
 
-    /*
-     * Need test it..
-     * Get Roles from User
-     * @return array
     public function roles()
     {
-        return $this->hasMany('Role');
+        return $this->belongsToMany('App\Api\V1\Models\Role', Config::get('entrust::assigned_roles_table'));
     }
-    */
 
     /**
      * Return a key value array, containing any custom claims to be added to the JWT.

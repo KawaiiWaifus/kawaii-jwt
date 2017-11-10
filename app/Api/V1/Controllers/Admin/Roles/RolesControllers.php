@@ -144,6 +144,11 @@ class RolesControllers extends Controller
      * @@ App\Api\V1\Models\Role, App\Api\V1\Models\Permission
      */
     public function attachPermission(Request $request){
+/*
+        if (!Auth::user()->ability(['admin.roles'], ['create'])):
+            return 'no permission';
+        endif;
+*/
         /**
          * select role by name
          */
@@ -182,6 +187,27 @@ class RolesControllers extends Controller
                 "Role-admin" => $user->hasRole('admin'),
                 "Permission-edit.User" => $user->can('edit-user'),
                 "Permission-list.Users" => $user->can('list-users')
+            ]
+        ]);
+    }
+
+    /**
+     * @return object permissions for test
+     */
+    public function show(){
+
+        $perm = [];
+        foreach (Auth::user()->roles()->get() as $p) {
+            $perm += [
+                $p->name => [
+                  'permission' => $p->permissions[0]['id']
+                ]
+            ];
+        }
+
+        return response()->json([
+            'body' => [
+                "permissions" => $perm
             ]
         ]);
     }
