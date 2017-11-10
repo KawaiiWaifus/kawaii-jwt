@@ -33,7 +33,8 @@ $api->version('v1', function ($api) {
         $api->post('add-user-role', 'Roles\RolesControllers@assignRole');
         // Route to attache permission to a role
         $api->post('add-permission-to-role', 'Roles\RolesControllers@attachPermission');
-
+        // Route TEST for show permissions, need token valid.
+        $api->post('show-permissions', 'Roles\RolesControllers@show');
         /**
          * Users
          */

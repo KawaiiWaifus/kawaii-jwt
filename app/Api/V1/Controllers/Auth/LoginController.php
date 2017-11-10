@@ -30,6 +30,16 @@ class LoginController extends Controller
 
         if ($token = Auth::guard()->attempt($credentials)) {
 
+            $perm = [];
+  
+            foreach (Auth::user()->roles()->get() as $p) {
+                $perm += [
+                  $p->name => [
+                    'permission' => $p->permissions[0]['id']
+                  ]
+                ];
+            }
+
             return response()->json([
                 'body' => [
                 'token' => $token,
@@ -37,12 +47,12 @@ class LoginController extends Controller
                   'id' => Auth::user()->id,
                   'name' => Auth::user()->name,
                   'email' => Auth::user()->email,
-                  'permissions' => json_decode(Auth::user()->permissions)
+                  'permissions' => $perm
                 ],
                 'token_type' => 'bearer',
                 'expires_in' => Auth::guard()->factory()->getTTL() * 60
                 ]
-            ]);
+            ], 200);
 
         } // if false continue
 
