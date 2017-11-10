@@ -1,6 +1,6 @@
 ## Kawaii-jwt (JWT) for Laravel 5.5+ and Quasar BoilerPlate
 ![Kawaii-jwt](https://4.bp.blogspot.com/-iDFV7brDjJk/WgORqIwPcmI/AAAAAAAAD_c/3KQHuWaa8qs9vzRXQCnGLDoazGo4Vjy2ACLcBGAs/s1600/1.jpg)
-
+[![Build Status](https://travis-ci.org/BlackMix/kawaii-jwt.svg)](https://travis-ci.org/BlackMix/kawaii-jwt)
 * Kawaii-jwt is API from Quasar BoilerPlate - [BoilerPlate](https://github.com/phpzm/quasar-boilerplate)
 
 
