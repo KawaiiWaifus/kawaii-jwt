@@ -37,7 +37,7 @@ class Update extends Controller
             endif;
 
             if($request->input('profile')):
-                $user->profile = $request->input('profile');
+                $user->profile = json_encode($request->input('profile'));
             endif;
 
             if($request->input('gender')):
