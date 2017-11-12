@@ -8,7 +8,6 @@ use App\Api\V1\Models\Permission,
     Illuminate\Http\Request,
     App\Api\V1\Controllers\Controller,
     Illuminate\Support\Facades\Auth,
-    JWTAuth, Tymon\JWTAuth\Exceptions\JWTException,
     Log;
 
 class RolesControllers extends Controller
@@ -21,92 +20,7 @@ class RolesControllers extends Controller
     {
         $this->middleware(['auth:api','role:admin.roles']);
     }
-    
 
-    public function index()
-    {
-       // return response()->json(['auth'=> Auth::user(), 'users' => User::all()]);
-    }
-
-    /**
-     * Create Roles
-     * @ Model Role
-     * @@ App\Api\V1\Models\Role
-     */
-    public function createRole(Request $request){
-
-        /**
-         * select role by name
-         */
-        $role = Role::where('name', '=', 
-        $request->input('name'))
-                ->first();
-
-        if ($role):
-
-            return response()->json([
-                'body' => [
-                  'message' => "Role $role->name already exists and can not be added again!",
-                  'status' => 'warning'
-                ]]);
-
-        else:
-
-            $role = new Role();
-            $role->name = $request->input('name');
-            $role->display_name = $request->input('display_name');
-            $role->description = $request->input('description');
-            $role->save();
-
-            return response()->json([
-                'body' => [
-                    'message' => "Role $role->name created with seuccess!",
-                    'status' => 'success'
-                ]]);
-
-        endif;
-
-    }
-
-    /**
-     * Create Permissions
-     * @ Model Permission
-     * @@ App\Api\V1\Models\Permission
-     */
-    public function createPermission(Request $request){
-
-        /**
-         * select permission by name
-         */
-        $permission = Permission::where('name', '=', 
-        $request->input('name'))
-                ->first();
-        
-        if ($permission):
-
-            return response()->json([
-                'body' => [
-                    'message' => "Permission $permission->name already exists and can not be added again!",
-                    'status' => 'warning'
-                    ]]);
-
-        else:
-
-            $permission = new Permission();
-            $permission->name = $request->input('name');
-            $permission->display_name = $request->input('display_name');
-            $permission->description = $request->input('description');
-            $permission->save();
-
-            return response()->json([
-                'body' => [
-                    'message' => "Permission $permission->name created with seuccess!",
-                    'status' => 'success'
-                    ]]);
-
-        endif;
-
-    }
 
     /**
      * Add Role to User
