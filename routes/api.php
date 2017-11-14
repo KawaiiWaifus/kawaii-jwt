@@ -26,10 +26,14 @@ $api->version('v1', function ($api) {
      */
     $api->group(['prefix' => 'admin', 'namespace' => 'App\Api\V1\Controllers\Admin'], function($api) {
 
-        // Route to Çist all Permissions
+        // Route to List all Permissions
         $api->get('permissions', 'Roles\PermissionsList@List');
+        // Route to Get the Permission
+        $api->get('permissions/{id}', 'Roles\PermissionsGet@Get');
         // Route to create a new permission
-        $api->post('permissions/create', 'Roles\PermissionsCreate@CreatePermission');
+        $api->post('permissions', 'Roles\PermissionsCreate@CreatePermission');
+        // Route to update Permission
+        $api->put('permissions/{id}', 'Roles\PermissionsUpdate@UpdatePermission');
 
 
         // Route to assign role to user
@@ -43,7 +47,7 @@ $api->version('v1', function ($api) {
         // List all Roles
         $api->get('roles', 'Roles\RolesList@list');
         // Route to create a new role
-        $api->post('roles/create', 'Roles\RolesCreate@CreateRole');
+        $api->post('roles', 'Roles\RolesCreate@CreateRole');
 
 
         /**
