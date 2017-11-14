@@ -35,7 +35,7 @@ class LoginController extends Controller
             foreach (Auth::user()->roles()->get() as $p) {
                 $perm += [
                   $p->name => [
-                    'permission' => $p->permissions[0]['id']
+                    'permission' => (isset($p->permissions[0]['id']) ? $p->permissions[0]['id'] : [])
                   ]
                 ];
             }
