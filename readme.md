@@ -14,7 +14,6 @@ ReLations packets:
 ## Installation 
 * composer create-project kawaiiwaifus/laravel-api-kawaii-jwt NameOfProject
 ## Usage
-* run the `php artisan entrust:migration`
 * run the `php artisan migrate`
 * run the `php artisan db:seed` for create tests users.
 ## Main Features
