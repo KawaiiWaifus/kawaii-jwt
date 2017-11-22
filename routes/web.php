@@ -28,4 +28,3 @@ Auth::routes();
     var_dump($query->time);
 });
 */
-Route::get('/series/crazy', '\App\Api\V1\Controllers\Admin\Series\SeriesController@crazy');
