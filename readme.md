@@ -33,6 +33,17 @@ For each controller there's an already setup route in `routes/api.php` file:
 * `POST api/auth/logout`, to log out the user by invalidating the passed token;
 * `GET api/auth/me`, to get current user data;
 
+
+## Router ADM Users
+
+* `GET api/admin/users`, get all users
+* `GET api/admin/users/{id}`, get user to edit
+* `PUT api/admin/users/{id}`, update user
+* `POST api/admin/users`,  "create user" I think not finished it.
+* `DELETE api/admin/users/{id}`, "delete user" I think not finished it.
+
+## --
+
 ## Router Roles e Permissions
 
 * `GET api/admin/roles`, get all roles
