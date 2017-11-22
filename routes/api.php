@@ -71,51 +71,10 @@ $api->version('v1', function ($api) {
          * Organizations
          */
         // List all organizations
-        $api->get('organization', 'Organization\OrganizationController@list');
-
-        
-
-        /**
-         * More routers for edit coming soon
-         */
-
-
-         /**
-         * Series
-         */
-        // List all Series
-
-        $api->get('series/seasons', 'Series\SeriesSeason@Season');
-        $api->get('series/genres', 'Series\Genres@List');
-        
-        $api->get('series', 'Series\SeriesList@List');
-        $api->get('series/{id}', 'Series\SeriesGet@Get');
-        $api->put('series/{id}', 'Series\SeriesUpdate@Update');
-
-        /**
-         * Files
-         */
-        $api->get('files', 'Files\FilesList@List');
-
-        
-        /**
-         * Category
-         */
-        $api->get('categories', 'Categories\CategoriesList@List');
-
-        
+        $api->get('organization', 'Organization\OrganizationController@list');        
         
     });
 
-    /**
-     * Routers Series public 
-     */
-    $api->group(['prefix' => 'series', 'namespace' => 'App\Api\V1\Controllers\Series'], function($api) {
-        /**
-         * Category
-         */
-        $api->get('categories', 'Categories\CategoriesController@List');
-    });
 
     $api->group(['middleware' => 'jwt.auth'], function($api) {
         $api->get('protected', function() {
