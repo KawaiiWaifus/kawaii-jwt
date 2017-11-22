@@ -21,5 +21,11 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+/*
+\Event::listen('Illuminate\Database\Events\QueryExecuted', function ($query) {
+    var_dump($query->sql);
+    var_dump($query->bindings);
+    var_dump($query->time);
+});
+*/
+Route::get('/series/crazy', '\App\Api\V1\Controllers\Admin\Series\SeriesController@crazy');

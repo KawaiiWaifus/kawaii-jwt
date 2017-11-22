@@ -2,7 +2,7 @@
 
 namespace App\Api\V1\Controllers\Admin\Users;
 
-use App\Api\V1\Models\User,
+use App\User,
     App\Api\V1\Controllers\Controller,
     Illuminate\Http\Request;
 
@@ -24,23 +24,12 @@ class Get extends Controller
     {
         $user = [];
 
-        $user = User::find($id);
+        $user = User::with('roles:id,display_name')->find($id);
 
         if ($user):
 
             return response()->json([
-                'body' => [
-                    'id' => $user->id,
-                    'name' => $user->name,
-                    'email' => $user->email,
-                    'telephone' => $user->telephone,
-                    'active' => $user->active,
-                    'gender' => $user->gender,
-                    'address' => $user->address,
-                    'amount' => $user->amount,
-                    'permissions' => json_decode($user->permissions),
-                    'profile' => json_decode($user->profile)
-                ],
+                'body' => $user,
                 'status'  => [
                    'code' => 200
                   ]

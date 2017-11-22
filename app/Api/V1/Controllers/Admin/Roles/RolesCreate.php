@@ -2,13 +2,10 @@
 
 namespace App\Api\V1\Controllers\Admin\Roles;
 
-use App\Api\V1\Models\Permission,
-    App\Api\V1\Models\Role,
-    App\Api\V1\Models\User,
+use App\Role,
     Illuminate\Http\Request,
     App\Api\V1\Controllers\Controller,
-    Illuminate\Support\Facades\Auth,
-    Log;
+    Illuminate\Support\Facades\Auth;
 
 class RolesCreate extends Controller
 {
@@ -18,7 +15,7 @@ class RolesCreate extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth:api','role:admin.roles']);
+        $this->middleware(['auth:api']);
     }
 
     
@@ -50,13 +47,13 @@ class RolesCreate extends Controller
             $role->name = $request->input('name');
             $role->display_name = $request->input('display_name');
             $role->description = $request->input('description');
-            $role->save();
+            $return = $role->save();
 
             return response()->json([
-                'body' => [
-                    'message' => "Role $role->name created with seuccess!",
-                    'status' => 'success'
-                ]]);
+                'body' => ['id' => $role->id],
+                'meta' => [],
+                'status' => ['code' => 200, 'message' => "Role $role->name created with success!"]
+                ]);
 
         endif;
 

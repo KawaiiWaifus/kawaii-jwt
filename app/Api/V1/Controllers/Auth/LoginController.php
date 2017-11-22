@@ -30,13 +30,18 @@ class LoginController extends Controller
 
         if ($token = Auth::guard()->attempt($credentials)) {
 
-            $perm = [];
+            $roles = [];
   
             foreach (Auth::user()->roles()->get() as $p) {
-                $perm += [
-                  $p->name => [
-                    'permission' => (isset($p->permissions[0]['id']) ? $p->permissions[0]['id'] : [])
-                  ]
+
+                $permission = [];
+
+                foreach ($p->permissions as $s) {
+                    $permission[] = ['permission' => $s->level];
+                }
+
+                $roles += [
+                  $p->name => $permission
                 ];
             }
 
@@ -46,9 +51,9 @@ class LoginController extends Controller
                 'user' => [
                   'id' => Auth::user()->id,
                   'name' => Auth::user()->name,
-                  'email' => Auth::user()->email,
-                  'permissions' => $perm
+                  'email' => Auth::user()->email
                 ],
+                'permissions' => $roles,
                 'token_type' => 'bearer',
                 'expires_in' => Auth::guard()->factory()->getTTL() * 60
                 ]

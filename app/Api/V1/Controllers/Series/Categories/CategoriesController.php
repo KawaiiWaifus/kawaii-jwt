@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Api\V1\Controllers\Admin\Roles;
+namespace App\Api\V1\Controllers\Series\Categories;
 
-use App\Permission,
+use App\Api\V1\Models\Series\Category,
     Illuminate\Http\Request,
     App\Api\V1\Controllers\Controller,
-    Auth;
+    Illuminate\Support\Facades\Auth;
 
-class PermissionsList extends Controller
+class CategoriesController extends Controller
 {
     /**
      * instance.
@@ -22,9 +22,9 @@ class PermissionsList extends Controller
      * @return array list roles 
      */
     public function list(Request $request){
-
-        if (!Auth::User()->ability(['admin.permissions'], ['read'])):
-            return response()->json(['body' => ['message' => __('lang.admin.permissions.read')]]);
+        
+        if (!Auth::user()->ability(['admin.roles'], ['read'])):
+            return 'no permission';
         endif;
 
         $limit = 20;
@@ -33,15 +33,15 @@ class PermissionsList extends Controller
             $limit = $request->input('limit');
         endif;
 
-        $permissions = Permission::withCount('roles')->paginate($limit);
+        $category = Category::where('id', '!=', 10)->paginate($limit);
 
         return response()->json([
-            'body' => $permissions->items(),
+            'body' => $category->items(),
             'meta' => [
-                'limit'   => $permissions->perPage(),
-                'page'    => $permissions->currentPage(),
-                'total'   => $permissions->total(),
-                'last'    => $permissions->lastPage()
+                'limit'   => $category->perPage(),
+                'page'    => $category->currentPage(),
+                'total'   => $category->total(),
+                'last'    => $category->lastPage()
             ],
                 'status'  => [
                 'code' => 200

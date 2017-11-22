@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use DB;
 
 class Kernel extends ConsoleKernel
 {
@@ -24,8 +25,18 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        // Fila de execuções do site programada
+        $schedule->command('queue:work')->everyMinute();
+        // Atualiza Ratings dos animes e mangás do site todos os dias.
+        $schedule->call(function () {
+        DB::table('animes')->join('lista_usuarios_animes','animes.id','=','lista_usuarios_animes.id_anime')
+        //->where('animes.id','=', 'lista_usuarios_animes.id_anime')
+            ->update([
+                'animes.totaln' => DB::raw('(select sum(MiX_lista_usuarios_animes.voto) from MiX_lista_usuarios_animes where 
+                MiX_lista_usuarios_animes.id_anime = MiX_animes.id  AND (MiX_lista_usuarios_animes.voto != 0) )')
+                ,'animes.totalv' => DB::raw('(select count(voto) from MiX_lista_usuarios_animes where 
+                MiX_lista_usuarios_animes.id_anime = MiX_animes.id AND (MiX_lista_usuarios_animes.voto != 0) )')]);
+            })->timezone('America/Recife')->dailyAt('04:00'); //daily
     }
 
     /**

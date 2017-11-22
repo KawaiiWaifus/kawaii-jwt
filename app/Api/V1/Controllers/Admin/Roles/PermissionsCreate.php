@@ -2,13 +2,10 @@
 
 namespace App\Api\V1\Controllers\Admin\Roles;
 
-use App\Api\V1\Models\Permission,
-    App\Api\V1\Models\Role,
-    App\Api\V1\Models\User,
+use App\Permission,
     Illuminate\Http\Request,
     App\Api\V1\Controllers\Controller,
-    Illuminate\Support\Facades\Auth,
-    Log;
+    Auth;
 
 class PermissionsCreate extends Controller
 {
@@ -18,7 +15,7 @@ class PermissionsCreate extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth:api','role:admin.roles']);
+        $this->middleware(['auth:api']);
     }
 
     /**
@@ -27,6 +24,10 @@ class PermissionsCreate extends Controller
      * @@ App\Api\V1\Models\Permission
      */
     public function CreatePermission(Request $request){
+
+        if (!Auth::User()->ability(['admin.permissions'], ['create'])):
+            return response()->json(['body' => ['message' => __('lang.admin.permissions.create')]]);
+        endif;
 
         /**
          * select permission by name
@@ -47,15 +48,16 @@ class PermissionsCreate extends Controller
 
             $permission = new Permission();
             $permission->name = $request->input('name');
+            $permission->level = $request->input('level');
             $permission->display_name = $request->input('display_name');
             $permission->description = $request->input('description');
             $permission->save();
 
             return response()->json([
-                'body' => [
-                    'message' => "Permission $permission->name created with seuccess!",
-                    'status' => 'success'
-                    ]]);
+                'body' => ['id' => $permission->id],
+                'meta' => [],
+                'status' => ['code' => 200, 'message' => "Permission $permission->name created with seuccess!"]
+                ]);
 
         endif;
 

@@ -2,11 +2,10 @@
 
 namespace App\Api\V1\Controllers\Admin\Roles;
 
-use App\Api\V1\Models\Permission,
+use App\Permission,
     Illuminate\Http\Request,
     App\Api\V1\Controllers\Controller,
-    Illuminate\Support\Facades\Auth,
-    Log;
+    Auth;
 
 class PermissionsGet extends Controller
 {
@@ -16,18 +15,18 @@ class PermissionsGet extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth:api','role:admin.roles']);
+        $this->middleware(['auth:api']);
     }
 
      /**
      * @return array list roles 
      */
     public function Get(Request $request, $id){
-        
-        if (!Auth::user()->ability(['admin.roles'], ['update'])):
-            return 'no permission';
+ 
+        if (!Auth::User()->ability(['admin.permissions'], ['read'])):
+            return response()->json(['body' => ['message' => __('lang.admin.permissions.read')]]);
         endif;
-
+        
         $permissions = Permission::find($id);
 
         if ($permissions):
