@@ -33,6 +33,20 @@ For each controller there's an already setup route in `routes/api.php` file:
 * `POST api/auth/logout`, to log out the user by invalidating the passed token;
 * `GET api/auth/me`, to get current user data;
 
+## Router Roles e Permissions
+
+* `GET api/admin/roles`, get all roles
+* `GET api/admin/roles/{id}`, get role to edit
+* `PUT api/admin/roles/{id}`, update role
+* `POST api/admin/roles`,  create role
+* `DELETE api/admin/roles/{id}`, delete role
+
+* `GET api/admin/permissions`, get all permissions
+* `GET api/admin/permissions/{id}`, get permission to edit
+* `PUT api/admin/permissions/{id}`, update permission
+* `POST api/admin/permissions`, create permission
+* `DELETE api/admin/permissions/{id}`, delete permission
+
 ### A Separate File for Routes
 
 All the API routes can be found in the `routes/api.php` file. This also follow the Laravel 5.5.
