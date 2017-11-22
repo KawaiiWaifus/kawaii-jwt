@@ -9,10 +9,12 @@ ReLations packets:
 * JWT-Auth - [tymondesigns/jwt-auth](https://github.com/tymondesigns/jwt-auth)
 * Dingo API - [dingo/api](https://github.com/dingo/api)
 * Laravel-CORS [barryvdh/laravel-cors](http://github.com/barryvdh/laravel-cors)
+* ENTRUST [Zizaco/ENTRUST](https://github.com/Zizaco/entrust)
 
 ## Installation 
 * composer create-project kawaiiwaifus/laravel-api-kawaii-jwt NameOfProject
 ## Usage
+* run the `php artisan entrust:migration`
 * run the `php artisan migrate`
 * run the `php artisan db:seed` for create tests users.
 ## Main Features
@@ -57,6 +59,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `gender` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
   `address` varchar(190) COLLATE utf8_unicode_ci DEFAULT NULL,
   `amount` varchar(75) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `profile` enum('general','support') COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),

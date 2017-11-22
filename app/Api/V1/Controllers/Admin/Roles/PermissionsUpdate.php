@@ -2,13 +2,10 @@
 
 namespace App\Api\V1\Controllers\Admin\Roles;
 
-use App\Api\V1\Models\Permission,
-    App\Api\V1\Models\Role,
-    App\Api\V1\Models\User,
+use App\Permission,
     Illuminate\Http\Request,
     App\Api\V1\Controllers\Controller,
-    Illuminate\Support\Facades\Auth,
-    Log;
+    Auth;
 
 class PermissionsUpdate extends Controller
 {
@@ -18,7 +15,7 @@ class PermissionsUpdate extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth:api','role:admin.roles']);
+        $this->middleware(['auth:api']);
     }
 
     /**
@@ -27,6 +24,10 @@ class PermissionsUpdate extends Controller
      * @@ App\Api\V1\Models\Permission
      */
     public function UpdatePermission(Request $request, $id){
+
+        if (!Auth::User()->ability(['admin.permissions'], ['update'])):
+            return response()->json(['body' => ['message' => __('lang.admin.permissions.update')]]);
+        endif;
 
         /**
          * select permission by name
@@ -39,6 +40,10 @@ class PermissionsUpdate extends Controller
 
             if($request->input('name')):
                 $permission->name = $request->input('name');
+            endif;
+
+            if($request->input('level')):
+                $permission->level = $request->input('level');
             endif;
 
             if($request->input('display_name')):
@@ -58,7 +63,7 @@ class PermissionsUpdate extends Controller
                 return response()->json([
                     'body' => $permission,
                     'status'  => [
-                       'code' => 200
+                       'code' => 200 
                       ]
                     ], 200);
 

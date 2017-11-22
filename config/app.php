@@ -77,7 +77,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'pt',
 
     /*
     |--------------------------------------------------------------------------
@@ -90,7 +90,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'pt',
 
     /*
     |--------------------------------------------------------------------------
@@ -169,7 +169,12 @@ return [
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         Dingo\Api\Provider\LaravelServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,
-        Zizaco\Entrust\EntrustServiceProvider::class,
+        
+        /**
+         * @param return database
+        */
+        Way\Generators\GeneratorsServiceProvider::class,
+        Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -232,8 +237,7 @@ return [
          * Package Facades...
          */
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
-        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
-        'Entrust' => Zizaco\Entrust\EntrustServiceProvider::class
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class
     ],
 
 ];

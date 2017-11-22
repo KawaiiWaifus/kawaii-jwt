@@ -2,7 +2,7 @@
 
 namespace App\Api\V1\Controllers\Admin\Users;
 
-use App\Api\V1\Models\User,
+use App\User,
     App\Api\V1\Controllers\Controller,
     Illuminate\Http\Request;
 
@@ -46,6 +46,23 @@ class Update extends Controller
 
             if($request->input('paswword')):
                 $user->paswword = bcrypt($request->input('paswword'));
+            endif;
+
+            if($request->input('roles')):
+                $ids = [];
+                
+                    if(is_array($request->input('roles'))):
+                        foreach($request->input('roles') as $role) {
+                            $ids[] = intval($role['id']);
+                        }
+                    else:
+                        foreach($request->input('roles') as $role) {
+                            $ids[] = intval($role->id);
+                        }
+                    endif;
+
+                // add permissions
+                $user->syncRoles($ids);
             endif;
 
             $done = $user->save();

@@ -2,13 +2,10 @@
 
 namespace App\Api\V1\Controllers\Admin\Roles;
 
-use App\Api\V1\Models\Permission,
-    App\Api\V1\Models\Role,
-    App\Api\V1\Models\User,
+use App\Role,
     Illuminate\Http\Request,
     App\Api\V1\Controllers\Controller,
-    Illuminate\Support\Facades\Auth,
-    Log;
+    Illuminate\Support\Facades\Auth;
 
 class RolesList extends Controller
 {
@@ -18,16 +15,16 @@ class RolesList extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth:api','role:admin.roles']);
+        $this->middleware(['auth:api']);
     }
 
      /**
      * @return array list roles 
      */
     public function list(Request $request){
-        
-        if (!Auth::user()->ability(['admin.roles'], ['read'])):
-            return 'no permission';
+
+        if (!Auth::User()->ability(['admin.roles'], ['read'])):
+            return response()->json(['body' => ['message' => __('lang.admin.roles.read')]]);
         endif;
 
         $limit = 20;
@@ -42,7 +39,7 @@ class RolesList extends Controller
         foreach ($roles as $p) {
             $per = [];
             foreach ($p->permissions as $n) {
-                $per[] = $n->name;
+                $per[] = $n->display_name;
             }
 
             $perm[] = [

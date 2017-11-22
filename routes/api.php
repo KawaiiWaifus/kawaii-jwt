@@ -34,6 +34,8 @@ $api->version('v1', function ($api) {
         $api->post('permissions', 'Roles\PermissionsCreate@CreatePermission');
         // Route to update Permission
         $api->put('permissions/{id}', 'Roles\PermissionsUpdate@UpdatePermission');
+        // Route to Delete Permission
+        $api->delete('permissions/{id}', 'Roles\PermissionsDelete@Delete');
 
 
         // Route to assign role to user
@@ -41,13 +43,16 @@ $api->version('v1', function ($api) {
         // Route to attache permission to a role
         $api->post('add-permission-to-role', 'Roles\RolesControllers@attachPermission');
 
-        // Route TEST for show permissions, need token valid.
-        $api->post('show-permissions', 'Roles\RolesControllers@show');
-        
         // List all Roles
         $api->get('roles', 'Roles\RolesList@list');
+        // Get Role
+        $api->get('roles/{id}', 'Roles\RolesGet@Get');
         // Route to create a new role
         $api->post('roles', 'Roles\RolesCreate@CreateRole');
+        // Route to create a new role
+        $api->put('roles/{id}', 'Roles\RolesUpdate@Update');
+        // delete a Role
+        $api->delete('roles/{id}', 'Roles\RolesDelete@Delete');
 
 
         /**
@@ -73,6 +78,43 @@ $api->version('v1', function ($api) {
         /**
          * More routers for edit coming soon
          */
+
+
+         /**
+         * Series
+         */
+        // List all Series
+
+        $api->get('series/seasons', 'Series\SeriesSeason@Season');
+        $api->get('series/genres', 'Series\Genres@List');
+        
+        $api->get('series', 'Series\SeriesList@List');
+        $api->get('series/{id}', 'Series\SeriesGet@Get');
+        $api->put('series/{id}', 'Series\SeriesUpdate@Update');
+
+        /**
+         * Files
+         */
+        $api->get('files', 'Files\FilesList@List');
+
+        
+        /**
+         * Category
+         */
+        $api->get('categories', 'Categories\CategoriesList@List');
+
+        
+        
+    });
+
+    /**
+     * Routers Series public 
+     */
+    $api->group(['prefix' => 'series', 'namespace' => 'App\Api\V1\Controllers\Series'], function($api) {
+        /**
+         * Category
+         */
+        $api->get('categories', 'Categories\CategoriesController@List');
     });
 
     $api->group(['middleware' => 'jwt.auth'], function($api) {

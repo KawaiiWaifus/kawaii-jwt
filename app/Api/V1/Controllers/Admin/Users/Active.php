@@ -2,7 +2,7 @@
 
 namespace App\Api\V1\Controllers\Admin\Users;
 
-use App\Api\V1\Models\User,
+use App\User,
     App\Api\V1\Controllers\Controller,
     Illuminate\Http\Request;
 
