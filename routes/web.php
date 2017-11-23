@@ -21,7 +21,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-/*
+/* debbug querys
 \Event::listen('Illuminate\Database\Events\QueryExecuted', function ($query) {
     var_dump($query->sql);
     var_dump($query->bindings);
