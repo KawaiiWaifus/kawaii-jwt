@@ -28,7 +28,7 @@
     ],
     "require": {
         "php": ">=7.0.0",
-        "laravel/framework": "^5.5.20",
+        "laravel/framework": "^5.5.21",
         "tymon/jwt-auth": "dev-develop",
         "dingo/api": "2.0.0-alpha1",
         "barryvdh/laravel-cors": "^0.9.3",
