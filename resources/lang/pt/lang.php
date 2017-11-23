@@ -1,5 +1,5 @@
 <?php
-
+// PT-br
 return [
     'admin.files.read' => 'Você não tem permissões de visualizar arquivos.',
     'admin.files.create' => 'Você não tem permissões de criar arquivos.',
