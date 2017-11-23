@@ -5,8 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable,
     Illuminate\Foundation\Auth\User as Authenticatable,
     Tymon\JWTAuth\Contracts\JWTSubject,
-    Config;
-use Laratrust\Traits\LaratrustUserTrait;
+    Laratrust\Traits\LaratrustUserTrait;
 
 class User extends Authenticatable implements JWTSubject
 {
