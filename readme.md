@@ -15,7 +15,8 @@ ReLations packets:
 * composer create-project kawaiiwaifus/laravel-api-kawaii-jwt NameOfProject
 ## Usage
 * run the `php artisan migrate`
-* run the `php artisan db:seed` for create tests users.
+* run the `php atisan jwt:secret`
+* run the `php artisan db:seed` (optional) for create tests users.
 ## Main Features
 
 ### A Ready-To-Use Authentication Controllers
